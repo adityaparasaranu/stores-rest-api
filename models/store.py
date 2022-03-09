@@ -6,7 +6,6 @@ class StoreModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
-    store_id = db.Column(db.Integer, primary_key=True)
 
     items = db.relationship("ItemModel", lazy="dynamic")
 
@@ -14,7 +13,7 @@ class StoreModel(db.Model):
         self.name = name
 
     def json(self):
-        return {"name": self.name, "store_id": self.store_id, "items": [item.json() for item in self.items]}
+        return {"name": self.name, "items": [item.json() for item in self.items]}
 
     @classmethod
     def find_by_name(cls, name):
