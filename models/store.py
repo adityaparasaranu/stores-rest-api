@@ -8,10 +8,7 @@ class StoreModel(db.Model):
     name = db.Column(db.String(80))
     # store_id = db.Column(db.Integer, primary_key=True)
 
-    item_id = db.Column(db.Integer, db.ForeignKey("items.id"))
-    item = db.relationship("ItemModel")
-
-    # items = db.relationship("ItemModel", lazy="dynamic")
+    items = db.relationship("ItemModel", lazy="dynamic")
 
     def __init__(self, name):
         self.name = name
