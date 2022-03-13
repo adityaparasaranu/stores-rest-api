@@ -1,7 +1,6 @@
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
 from models.item import ItemModel
-import os
 
 
 class Item(Resource):
@@ -58,8 +57,4 @@ class Item(Resource):
 
 class ItemList(Resource):
     def get(self):
-        # return {"items": [item.json() for item in ItemModel.query.all()]}
-        uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
-        if uri.startswith("postgres://"):
-            uri = uri.replace("postgres://", "postgresql://")
-        return uri
+        return {"items": [item.json() for item in ItemModel.query.all()]}
