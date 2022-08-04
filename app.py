@@ -8,7 +8,7 @@ from security import authenticate, identity
 from resources.user import UserRegister, User
 from resources.item import Item, ItemList
 from resources.store import Store, StoreList
-# ajbabdhvdhvj
+
 app = Flask(__name__)
 
 app.config['PROPAGATE_EXCEPTIONS'] = True
