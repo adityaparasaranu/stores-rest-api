@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -15,10 +13,11 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = "aditya"
 api = Api(app)
 
-uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
-if uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://")
-app.config['SQLALCHEMY_DATABASE_URI'] = uri
+# uri = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+# if uri.startswith("postgres://"):
+#     uri = uri.replace("postgres://", "postgresql://")
+
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 jwt = JWT(app, authenticate, identity)
