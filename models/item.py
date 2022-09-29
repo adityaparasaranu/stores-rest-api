@@ -9,7 +9,9 @@ class ItemModel(db.Model):
     price = db.Column(db.Float(precision=2))
 
     store_id = db.Column(db.Integer, db.ForeignKey("stores.id"))
-    store = db.relationship("StoreModel", back_populates="items")
+    # So store_id is in this table. So `Item` table is the child table,
+    # and the store.id, i.e the id column of `Store` table is the parent table
+    store = db.relationship("StoreModel")
 
     def __init__(self, name, price, store_id):
         self.name = name
